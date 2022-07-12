@@ -4,6 +4,8 @@ let notaAlumno2
 let notaAlumno3
 let sumaNotas
 let promedio
+let asignatura
+let asignaturaCantidad
 const trimestres = 3
 
 function error() {
@@ -11,9 +13,14 @@ function error() {
 }
 
 function bienvenido() {
-    nombreApellido = prompt ("Bienvenido al promediador de notas, ingrese su nombre y apelllido")
+    nombreApellido = prompt ("Bienvenido al promediador de notas, ingrese su nombre y apellido")
+    asignaturaCantidad = parseInt(prompt("Cantidad de asignaturas a calcular (Máximo 12)"))
+        for (let i = 2 ; i <= asignaturaCantidad; i++) {
+            notas()
+        }
 }
 function notas() {
+    asignatura = prompt("Nombre de asignatura")
     notaAlumno = parseInt(prompt("Nota en el primer trimestre"))
         if ( notaAlumno >= 0 && notaAlumno <= 10 ) {
             notaAlumno2 = parseInt(prompt("Nota en el segundo trimestre"))
@@ -22,6 +29,7 @@ function notas() {
                 if ( notaAlumno3 >= 0 && notaAlumno3 <= 10 ) {
                     calculoNotas()
                     promediador()
+                    return;
                 }
                 else  ( notaAlumno3 >= 11)
                 {
@@ -45,11 +53,13 @@ function notas() {
         let promedio = (sumaNotas / trimestres)
         if (promedio >= 7) 
         {
-            alert("Felicidades " + nombreApellido +", tu promedio es de "+ promedio +", aprobaste crack.")
+            alert("Felicidades " + nombreApellido +", tu promedio en "+ asignatura +" es de "+ promedio +", aprobaste crack.")
+            return;
         }
         else (promedio <= 6) 
         {
-            alert("Lo lamentamos, " + nombreApellido + " , tu promedio es de " + promedio +" desaprobaste por bobi")
+            alert("Lo lamentamos, " + nombreApellido + " , tu promedio en "+ asignatura +" es de " + promedio +" desaprobaste por bobi")
+            return;
         }
     }
     bienvenido ();
